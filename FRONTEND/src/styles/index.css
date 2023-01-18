@@ -1,0 +1,127 @@
+*{
+    margin:0px;
+    /* font-family:Josefin Sans; */
+}
+*:focus {
+    outline: none;
+}
+.cont{
+    width: 100%;
+    /* border: 2px solid red; */
+}
+header{
+    color: white;
+    text-align: center;
+    background-color: black;
+    padding: 10px 0px;
+    width: 100%;
+    margin: auto;
+}
+#options{
+    /* border: 2px solid red; */
+    display: flex;
+    width: 90%;
+    margin: auto;
+    justify-content: space-between;
+    /* text-align: right; */
+    padding: 10px 0px;
+}
+#options>span>a{
+    text-decoration: none;
+}
+#navbar{
+    /* border: 2px solid blue; */
+    width: 90%;
+    margin: auto;
+}
+#upper{
+    display: flex;
+    justify-content: space-between;
+}
+#left,#right{
+    /* border: 2px solid greenyellow; */
+    height: 85px;
+}
+#logo{
+    /* border: 1px solid blue; */
+    height: 100%;
+}
+#search{
+    margin-top: 25px;
+    border: none;
+    padding: 2px;
+    /* width: 100%; */
+    border-bottom: 2px solid black;
+}
+#srchbtn{
+    border: none;
+    padding: 4px 8px;
+    cursor: pointer;
+    color: white;
+    background-color: black;
+}
+#lower{
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: space-between;
+}
+.items{
+    padding-bottom: 10px;
+}
+.items:hover{
+    border-bottom: 2px solid black;
+    cursor: pointer;
+}
+#drop{
+    /* border: 2px solid red; */
+    background-color: rgba(255, 255, 255, 0.861);
+    width: 90%;
+    display: none;  
+    justify-content: space-between;
+    position: absolute;
+}
+.ul{
+    list-style:none;
+    padding: 0px;
+    line-height: 30px;
+}
+.dropdown>div{
+    width: 17%;
+    /* border: 1px solid blue; */
+}
+.ulhead{
+    font-weight: bold;
+}
+#banner{
+    /* border: 2px solid green; */
+    width: 90%;
+    margin: auto;
+    margin-bottom: 50px;
+    height: 100%;
+}
+#banner>img{
+    width: 100%;
+}
+#suggestions{
+    width: 90%;
+    margin: auto;
+    margin-bottom: 70px;
+    display: flex;
+    justify-content: space-between;
+}
+#leftsug,#rightsug{
+    width: 49%;
+}
+#suggestions img{
+    width: 100%;
+}
+#featured{
+    /* border: 2px solid blue; */
+    width: 95vw;
+    margin: auto;
+    text-align: center;
+}
+
+
+
+

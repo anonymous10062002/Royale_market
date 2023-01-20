@@ -14,13 +14,28 @@ userRouter.get('/',async(req,res)=>{
     }
 })
 
-// userRouter.post('/login',async(req,res)=>{
-//     try {
-        
-//     } catch (error) {
-        
-//     }
-// })
+userRouter.post('/login',async(req,res)=>{
+    let {email,password}=req.body;
+    try {
+        let user=await UserModel.find({email});
+        if(user.length){
+            bcrypt.compare(password,user[0].password,(err,result)=>{
+                if(result){
+                    let token=jwt.sign({userID:user[0]._id},'royal');
+                    res.status(200).send({token,username:user[0].username});
+                }
+                else{
+                    res.status(400).send({err:'Wrong credentials!'});
+                }
+            })
+        }
+        else{
+            res.status(404).send({msg:'No user found with this eamil! Please register first.'});
+        }
+    } catch (error) {
+        res.status(400).send(error);
+    }
+})
 
 userRouter.post('/register',async(req,res)=>{
     let {username,email,password}=req.body;
@@ -32,7 +47,7 @@ userRouter.post('/register',async(req,res)=>{
             else{
                 let user=new UserModel({username,email,password:securePass});
                 await user.save();
-                res.send('Registered successfully');
+                res.status(200).send('Registered successfully');
             }
         })
     } catch (error) {

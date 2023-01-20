@@ -26,6 +26,10 @@ header{
     /* text-align: right; */
     padding: 10px 0px;
 }
+#logoutBtn{
+    margin-left: 20px;
+    padding: 5px 15px;
+}
 #options>span>a{
     text-decoration: none;
 }
@@ -45,6 +49,7 @@ header{
 #logo{
     /* border: 1px solid blue; */
     height: 100%;
+    cursor: pointer;
 }
 #search{
     margin-top: 25px;
@@ -138,18 +143,35 @@ header{
     width: 90%;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(5,1fr);
+    grid-template-columns: repeat(4,1fr);
     grid-template-rows: auto;
+    column-gap: 50px;
+    row-gap: 50px;
+}
+#btnDiv{
+    display: flex;
+    margin-top: 40px;
+    justify-content: space-around;
+}
+#btnDiv>button{
+    padding: 10px 20px;
+    border: none;
+}
+#btnDiv>button:hover{
+    color: white;
+    background-color: black;
 }
 #trending>div{
     /* border: 1px solid red; */
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     height: 400px;
     text-align: center;
     padding: 0px 15px;
     box-sizing: border-box;
 }
 #trending>div>img{
-    height: 70%;
+    margin-top: 20px;
+    height: 50%;
 }
 #trending>div>h4{
     margin-bottom: 10px;

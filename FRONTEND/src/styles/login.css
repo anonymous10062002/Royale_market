@@ -28,6 +28,7 @@
 #logo{
     /* border: 1px solid blue; */
     height: 100%;
+    cursor: pointer;
 }
 #search{
     margin-top: 25px;

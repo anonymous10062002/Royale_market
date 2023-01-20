@@ -1,3 +1,25 @@
+// CHECKING LOGGED IN OR NOT
+if(sessionStorage.getItem("accessToken")){
+  let username=sessionStorage.getItem("username");
+  let options=document.getElementById("options");
+  options.innerHTML=`<div id="leftWel">Welcome ${username}</div>
+  <div id="rightWel">
+  MY CART
+  <button id="logoutBtn">Logout</button>
+  </div>`
+}
+// LOGOUT BY BTN
+if(sessionStorage.getItem("accessToken")){
+  let logoutBtn=document.getElementById("logoutBtn");
+  logoutBtn.addEventListener("click",()=>{
+  sessionStorage.clear();
+  location.reload();
+  })
+}
+// JUMP TO HOMEPAGE
+document.getElementById("logo").addEventListener("click",()=>{
+  window.location.assign("index.html")
+})
 // DROPDOWNS
 let shoes = document.getElementById("shoes");
 let shoedrop = document.getElementById("drop");
@@ -69,13 +91,23 @@ function displayData(data) {
   let mainDiv = document.getElementById("mainDiv");
   data.forEach((item) => {
     let div = document.createElement("div");
+    div.setAttribute("id","productDiv");
     let img = document.createElement("img");
     img.setAttribute("src", item.product);
     let title = document.createElement("h4");
     title.innerText = item.description;
     let price = document.createElement("p");
     price.innerText = `INR ${item.price}`;
-    div.append(img, title, price);
+    let btnDiv=document.createElement("div");
+    btnDiv.setAttribute("id","btnDiv");
+    let buyBtn=document.createElement("button");
+    buyBtn.setAttribute("id","buyBtn");
+    buyBtn.innerText="Buy now";
+    let addCartBtn=document.createElement("button");
+    addCartBtn.setAttribute("id","addCartBtn");
+    addCartBtn.innerText="Add to cart";
+    btnDiv.append(buyBtn,addCartBtn);
+    div.append(img, title, price,btnDiv);
     mainDiv.append(div);
   });
 }

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./src/styles/login.css">
-    <title>Login</title>
+    <link rel="stylesheet" href="./src/styles/signup.css">
+    <title>Signup</title>
 </head>
 <body>
     <div class="cont">
@@ -21,22 +21,26 @@
         <!-- main form -->
         <div id="main">
             <div id="leftMain">
-                <h2>SIGN IN</h2>
+                <h2>CREATE AN ACCOUNT</h2>
                 <form id="loginForm">
+                    <label for="firstname">First Name</label><br>
+                    <input id="fname" type="text" required><br>
+                    <label for="lastname">Last Name</label><br>
+                    <input id="lname" type="text" required><br>
                     <label for="email">Email Address</label><br>
                     <input id="email" type="text" required><br>
                     <label for="password">Password</label><br>
                     <input id="pass" type="password" required><br>
                     <input id="check" type="checkbox">
-                    <label for="check">Keep me Signed in ?</label><br>
-                    <button type="submit">SIGN IN</button>
+                    <label for="check">Subscribe to text messages and we'll send and important<pre>   </pre>account information right to your phone.</label><br>
+                    <button type="submit">CREATE ACCOUNT</button>
                 </form>
             </div>
             <div id="vl"></div>
             <div id="rightMain">
-                <h2>DON'T HAVE AN ACCOUNT?</h2>
-                <p>Create an account to check out faster and use our convenient site features.</p>
-                <button id="jumptosignup">CREATE AN ACCOUNT</button>
+                <h2>ALREADY HAVE AN ACCOUNT?</h2>
+                <p>Log In to your account and continue shopping to check newest arrivals.</p>
+                <button id="jumptologin">SIGN IN YOUR ACCOUNT</button>
             </div>
         </div>
         <!-- footer -->
@@ -130,6 +134,6 @@
             <footer>Copyright © 2014-2023 Royale's Market.com. All Rights Reserved by Ashish Pal.</footer>
         </div>
     </div>
-<script src="./src/scripts/login.js"></script>
+<script src="./src/scripts/signup.js"></script>
 </body>
 </html>

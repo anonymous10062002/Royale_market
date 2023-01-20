@@ -9,34 +9,12 @@
     width: 100%;
     /* border: 2px solid red; */
 }
-header{
-    color: white;
-    text-align: center;
-    background-color: black;
-    padding: 10px 0px;
-    width: 100%;
-    margin: auto;
-}
-#options{
-    /* border: 2px solid red; */
-    display: flex;
-    width: 90%;
-    margin: auto;
-    justify-content: space-between;
-    padding: 10px 0px;
-}
-#options>span>a{
-    text-decoration: none;
-}
-#logoutBtn{
-    margin-left: 20px;
-    padding: 5px 15px;
-    
-}
 #navbar{
     /* border: 2px solid blue; */
+    border-bottom: 1px solid black;
     width: 90%;
     margin: auto;
+    margin-bottom: 50px;
 }
 #upper{
     display: flex;
@@ -44,7 +22,8 @@ header{
 }
 #left,#right{
     /* border: 2px solid greenyellow; */
-    height: 85px;
+    height: 60px;
+    padding-top: 20px;
 }
 #logo{
     /* border: 1px solid blue; */
@@ -64,83 +43,66 @@ header{
     color: white;
     background-color: black;
 }
-#lower{
-    /* border: 2px solid red; */
-    display: flex;
-    justify-content: space-between;
-}
-.items{
-    padding-bottom: 10px;
-}
-.items:hover{
-    border-bottom: 2px solid black;
-    cursor: pointer;
-}
-#drop,#bagdrop,#jwelldrop{
-    /* border: 2px solid red; */
-    background-color: rgb(255, 255, 255);
-    width: 90%;
-    display: none;  
-    justify-content: space-between;
-    position: absolute;
-    /* height: 80%; */
-}
-.dropdown>div{
-    margin-top: 25px;
-}
-.ul{
-    list-style:none;
-    padding: 0px;
-    line-height: 30px;
-}
-.dropdown>div{
-    width: 17%;
-    /* border: 1px solid blue; */
-}
-.ulhead{
-    font-weight: bold;
-}
 
 /* ########################################################################## */
 
-
-#mainDiv{
+#main{
     /* border: 2px solid red; */
     width: 90%;
     margin: auto;
-    display: grid;
-    margin-top: 40px;
-    grid-template-columns: repeat(4,1fr);
-    grid-template-rows: auto;
-    gap: 50px;
-}
-#btnDiv{
     display: flex;
-    margin-top: 40px;
-    justify-content: space-around;
+    gap: 100px;
+    justify-content: center;
 }
-#btnDiv>button{
-    padding: 10px 20px;
+#leftMain>h2{
+    /* border: 1px solid blue; */
+    margin-bottom: 45px;
+}
+#fname,#lname,#email,#pass{
+    width: 400px;
+    height: 40px;
+    margin-bottom: 30px;
+}
+#check{
+    height: 17px;
+    width: 17px;
+}
+#loginForm button{
     border: none;
-}
-#btnDiv>button:hover{
+    width: 406px;
+    height: 55px;
+    margin-top: 45px;
+    font-size: medium;
+    cursor: pointer;
     color: white;
     background-color: black;
 }
-#mainDiv>div{
-    /* border: 1px solid red; */
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    height: 400px;
-    text-align: center;
-    padding: 0px 15px;
-    box-sizing: border-box;
+#leftMain{
+    width: 30%;
 }
-#mainDiv>div>img{
-    margin-top: 20px;
-    height: 50%;
+#rightMain{
+    /* border: 1px solid blue; */
+    width: 35%;
 }
-#mainDiv>div>h4{
-    margin-bottom: 10px;
+#rightMain>h2{
+    margin-bottom: 45px;
+}
+#rightMain>p{
+    margin-bottom: 30px;
+}
+#rightMain>button{
+    border: 1px solid black;
+    /* padding: 13px 100px; */
+    width: 345px;
+    height: 45px;
+    margin-top: 10px;
+    font-size: medium;
+    cursor: pointer;
+    color: black;
+    background-color: white;
+}
+#vl{
+    border-left: 1px solid black;
 }
 
 /* ########################################################################## */
@@ -151,7 +113,6 @@ header{
     background-color: whitesmoke;
     padding-top: 50px;
     margin-top: 60px;
-    margin-bottom: 50px;
 }
 .features{
     /* border: 1px solid red; */

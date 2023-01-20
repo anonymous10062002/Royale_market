@@ -5,8 +5,8 @@ let shoedrop = document.getElementById("drop");
 let bags = document.getElementById("handbag");
 let bagdrop = document.getElementById("bagdrop");
 
-let jwell = document.getElementById("jwell");
-let jwelldrop = document.getElementById("jwelldrop");
+let jwell= document.getElementById("jwell");
+let jwelldrop=document.getElementById("jwelldrop");
 
 shoes.addEventListener("mouseover", myFunction);
 shoedrop.addEventListener("mouseout", myFunction);
@@ -17,7 +17,8 @@ function myFunction() {
     shoedrop.style.display = "flex";
   } else if (drop.style.display === "flex") {
     shoedrop.style.display = "none";
-  } else {
+  }
+   else {
     shoedrop.style.display = "flex";
   }
 }
@@ -31,7 +32,8 @@ function myFunction2() {
     bagdrop.style.display = "flex";
   } else if (bagdrop.style.display === "flex") {
     bagdrop.style.display = "none";
-  } else {
+  }
+   else {
     bagdrop.style.display = "flex";
   }
 }
@@ -45,27 +47,12 @@ function myFunction3() {
     jwelldrop.style.display = "flex";
   } else if (jwelldrop.style.display === "flex") {
     jwelldrop.style.display = "none";
-  } else {
+  }
+   else {
     jwelldrop.style.display = "flex";
   }
 }
 
-// SLIDER
-function first() {
-  document.getElementById("sliderImage").src =
-    "https://images.bloomingdalesassets.com/is/image/BcomMedia/media/0117_0118_D_02_CAR_c_RTW_Coats.jpg?scl=1&fmt=webp&wid=1440";
-}
-function second() {
-  document.getElementById("sliderImage").src =
-    "https://images.bloomingdalesassets.com/is/image/BcomMedia/media/0117_0118_D_02_CAR_e_MEN_Denim.jpg?scl=1&fmt=webp&wid=1440";
-}
-function third() {
-  document.getElementById("sliderImage").src =
-    "https://images.bloomingdalesassets.com/is/image/BcomMedia/media/0117_0118_D_02_CAR_a_MULTI_LNY_WaterRabbit.jpg?scl=1&fmt=webp&wid=1440";
-}
-setInterval(first, 3000);
-setInterval(second, 6000);
-setInterval(third, 9000);
 // TRENDING COLLECTIONS
 getdata();
 async function getdata() {
@@ -79,7 +66,7 @@ async function getdata() {
 }
 //TRENDING DISPLAY FUNCTION
 function displayData(data) {
-  let trendingDiv = document.getElementById("trending");
+  let mainDiv = document.getElementById("mainDiv");
   data.forEach((item) => {
     let div = document.createElement("div");
     let img = document.createElement("img");
@@ -89,6 +76,6 @@ function displayData(data) {
     let price = document.createElement("p");
     price.innerText = `INR ${item.price}`;
     div.append(img, title, price);
-    trendingDiv.append(div);
+    mainDiv.append(div);
   });
 }

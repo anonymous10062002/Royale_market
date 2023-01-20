@@ -9,30 +9,12 @@
     width: 100%;
     /* border: 2px solid red; */
 }
-header{
-    color: white;
-    text-align: center;
-    background-color: black;
-    padding: 10px 0px;
-    width: 100%;
-    margin: auto;
-}
-#options{
-    /* border: 2px solid red; */
-    display: flex;
-    width: 90%;
-    margin: auto;
-    justify-content: space-between;
-    /* text-align: right; */
-    padding: 10px 0px;
-}
-#options>span>a{
-    text-decoration: none;
-}
 #navbar{
     /* border: 2px solid blue; */
+    border-bottom: 1px solid black;
     width: 90%;
     margin: auto;
+    margin-bottom: 50px;
 }
 #upper{
     display: flex;
@@ -40,7 +22,8 @@ header{
 }
 #left,#right{
     /* border: 2px solid greenyellow; */
-    height: 85px;
+    height: 60px;
+    padding-top: 20px;
 }
 #logo{
     /* border: 1px solid blue; */
@@ -50,7 +33,6 @@ header{
     margin-top: 25px;
     border: none;
     padding: 2px;
-    /* width: 100%; */
     border-bottom: 2px solid black;
 }
 #srchbtn{
@@ -60,107 +42,70 @@ header{
     color: white;
     background-color: black;
 }
-#lower{
+
+/* ########################################################################## */
+
+#main{
     /* border: 2px solid red; */
-    display: flex;
-    justify-content: space-between;
-}
-.items{
-    padding-bottom: 10px;
-}
-.items:hover{
-    border-bottom: 2px solid black;
-    cursor: pointer;
-}
-#drop,#bagdrop,#jwelldrop{
-    /* border: 2px solid red; */
-    background-color: rgb(255, 255, 255);
     width: 90%;
-    display: none;  
-    justify-content: space-between;
-    position: absolute;
-    /* height: 80%; */
+    margin: auto;
+    display: flex;
+    gap: 100px;
+    justify-content: center;
 }
-.dropdown>div{
-    margin-top: 25px;
-}
-.ul{
-    list-style:none;
-    padding: 0px;
-    line-height: 30px;
-}
-.dropdown>div{
-    width: 17%;
+#leftMain>h2{
     /* border: 1px solid blue; */
+    margin-bottom: 45px;
 }
-.ulhead{
-    font-weight: bold;
+#email,#pass{
+    width: 400px;
+    height: 40px;
+    margin-bottom: 30px;
 }
-#banner{
-    /* border: 2px solid green; */
-    width: 90%;
-    margin: auto;
-    margin-bottom: 50px;
-    height: 100%;
+#check{
+    height: 17px;
+    width: 17px;
 }
-#banner>img{
-    width: 100%;
+#loginForm button{
+    border: none;
+    width: 406px;
+    height: 55px;
+    margin-top: 45px;
+    font-size: medium;
+    cursor: pointer;
+    color: white;
+    background-color: black;
 }
-#suggestions{
-    width: 90%;
-    margin: auto;
-    margin-bottom: 70px;
-    display: flex;
-    justify-content: space-between;
+#rightMain{
+    /* border: 1px solid blue; */
+    width: 25%;
 }
-#leftsug,#rightsug{
-    width: 49%;
+#rightMain>h2{
+    margin-bottom: 45px;
 }
-#suggestions img{
-    width: 100%;
+#rightMain>button{
+    border: 1px solid black;
+    /* padding: 13px 100px; */
+    width: 345px;
+    height: 45px;
+    margin-top: 10px;
+    font-size: medium;
+    cursor: pointer;
+    color: black;
+    background-color: white;
 }
-#featured{
-    /* border: 2px solid blue; */
-    width: 95vw;
-    margin: auto;
-    text-align: center;
+#vl{
+    border-left: 1px solid black;
 }
-#trendhead{
-    border-bottom: 1px solid black;
-    width: 90%;
-    margin: auto;
-    margin-top: 60px;
-    margin-bottom: 50px;
-    padding-bottom: 20px;
-}
-#trending{
-    /* border: 2px solid red; */
-    width: 90%;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(5,1fr);
-    grid-template-rows: auto;
-}
-#trending>div{
-    /* border: 1px solid red; */
-    height: 400px;
-    text-align: center;
-    padding: 0px 15px;
-    box-sizing: border-box;
-}
-#trending>div>img{
-    height: 70%;
-}
-#trending>div>h4{
-    margin-bottom: 10px;
-}
+
+/* ########################################################################## */
+
 .footer{
     width: 100%;
     height: auto;
     background-color: whitesmoke;
     padding-top: 50px;
     margin-top: 60px;
-    margin-bottom: 50px;
 }
 .features{
     /* border: 1px solid red; */
@@ -265,7 +210,3 @@ header{
     font-size: 14px;
     font-family: OpenSans,Arial,Helvetica,sans-serif;
 }
-
-
-
-

@@ -92,7 +92,7 @@ setInterval(third, 9000);
 getdata();
 async function getdata() {
   try {
-    let req = await fetch("http://localhost:5050/jwellery");
+    let req = await fetch("http://localhost:5050/products?category=Sneakers&limit=8");
     let data = await req.json();
     displayData(data);
   } catch (error) {
@@ -122,5 +122,9 @@ function displayData(data) {
     btnDiv.append(buyBtn,addCartBtn);
     div.append(img, title, price,btnDiv);
     trendingDiv.append(div);
+    img.addEventListener("click",()=>{
+      localStorage.setItem("productID",item._id);
+      window.location.assign("product.html");
+    })
   });
 }

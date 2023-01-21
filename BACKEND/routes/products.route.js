@@ -1,11 +1,14 @@
+const { query } = require('express');
 const express=require('express');
 const {ProductModel}=require('../models/product.model');
 const productRouter=express.Router();
 
 productRouter.get('/',async(req,res)=>{
     let query=req.query;
+    let skip=req.query.skip;
+    let limit=req.query.limit;
     try {
-        let products=await ProductModel.find(query);
+        let products=await ProductModel.find(query).limit(limit).skip(skip);
         res.send(products);
     } catch (error) {
         res.sendStatus(404);

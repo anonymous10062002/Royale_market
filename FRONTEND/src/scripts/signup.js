@@ -1,3 +1,7 @@
+// JUMP TO HOMEPAGE
+document.getElementById("logo").addEventListener("click",()=>{
+    window.location.assign("index.html")
+})
 // JUMP TO LOGIN PAGE
 let btn=document.getElementById("jumptologin");
 btn.addEventListener("click",()=>{

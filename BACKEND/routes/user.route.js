@@ -4,16 +4,6 @@ const userRouter=express.Router();
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 
-userRouter.get('/',async(req,res)=>{
-    let query=req.query;
-    try {
-        let users=await UserModel.find(query);
-        res.send(users);
-    } catch (error) {
-        res.sendStatus(404);
-    }
-})
-
 userRouter.post('/login',async(req,res)=>{
     let {email,password}=req.body;
     try {
@@ -52,6 +42,18 @@ userRouter.post('/register',async(req,res)=>{
         })
     } catch (error) {
         res.sendStatus(400);
+    }
+})
+
+// ADMIN HANDLED ROUTES
+
+userRouter.get('/admin/users',async(req,res)=>{
+    let query=req.query;
+    try {
+        let users=await UserModel.find(query);
+        res.send(users);
+    } catch (error) {
+        res.sendStatus(404);
     }
 })
 

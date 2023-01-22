@@ -81,7 +81,7 @@ getCartData();
 async function getCartData(){
     let token=sessionStorage.getItem("accessToken"); 
     try {
-      let req=await fetch(`http://localhost:5050/users/cart`,{
+      let req=await fetch(`https://alive-pig-kimono.cyclic.app/users/cart`,{
         headers:{
           'Authorization':token
         }

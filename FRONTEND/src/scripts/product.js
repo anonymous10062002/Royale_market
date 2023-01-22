@@ -79,7 +79,7 @@ getProduct();
 async function getProduct(){
     let pID=localStorage.getItem("productID");
     try {
-        let req=await fetch(`http://localhost:5050/products/?_id=${pID}`);
+        let req=await fetch(`https://alive-pig-kimono.cyclic.app/?_id=${pID}`);
         let res=await req.json();
         // console.log(data);
         displayProduct(res[0]);
@@ -133,7 +133,7 @@ function displayProduct(data){
     btn.addEventListener("click",async()=>{
       let token=sessionStorage.getItem("accessToken"); 
     try {
-      let req=await fetch(`http://localhost:5050/users/cart/add`,{
+      let req=await fetch(`https://alive-pig-kimono.cyclic.app/users/cart/add`,{
         method:'POST',
         headers:{
           'Content-Type':'application/json',

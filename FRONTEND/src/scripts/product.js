@@ -128,14 +128,10 @@ function displayProduct(data){
     favBtn.innerText="ADD TO FAVOURITES";
     detailDiv.append(brand,des,price,color,size,select,br,btn,br,favBtn);
     mainDiv.append(imgDiv,detailDiv);
+
   // ADD DATA TO CART API
-    btn.addEventListener("click",postCartData(data));
-}
-
- // ADD DATA TO CART API
-
- async function postCartData(prodObj){
-    let token=sessionStorage.getItem("accessToken"); 
+    btn.addEventListener("click",async()=>{
+      let token=sessionStorage.getItem("accessToken"); 
     try {
       let req=await fetch(`http://localhost:5050/users/cart/add`,{
         method:'POST',
@@ -143,16 +139,27 @@ function displayProduct(data){
           'Content-Type':'application/json',
           'Authorization': token
         },
-        body:JSON.stringify(prodObj)
+        body:JSON.stringify(data)
       })
       let res=await req.json();
       if(req.ok){
-        console.log(res.msg);
+        console.log(alert(res.msg));
       }
     } catch (error) {
       console.log(error);
     }
- }
+    });
+}
+// JUMP TO CART PAGE
+
+let myCart=document.getElementById("rightWel");
+myCart.addEventListener("click",()=>{
+  window.location.assign('cart.html');
+});
+
+
+
+
 
 
 

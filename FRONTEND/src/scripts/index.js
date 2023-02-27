@@ -97,7 +97,7 @@ setInterval(third, 9000);
 getdata();
 async function getdata() {
   try {
-    let req = await fetch("http://localhost:5050/products?category=Sneakers&limit=8");
+    let req = await fetch("https://misty-turtleneck-shirt-ray.cyclic.app/products?category=Sneakers&limit=8");
     let data = await req.json();
     displayData(data);
   } catch (error) {

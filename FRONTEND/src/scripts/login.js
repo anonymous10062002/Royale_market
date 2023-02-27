@@ -16,7 +16,7 @@ form.addEventListener("submit",async (e)=>{
     let password=document.getElementById("pass").value;
     let userObj={email,password};
     try {
-        let req=await fetch("http://localhost:5050/users/login",{
+        let req=await fetch("https://misty-turtleneck-shirt-ray.cyclic.app/users/login",{
           method:'POST',
           headers:{
             'Content-Type':'application/json'

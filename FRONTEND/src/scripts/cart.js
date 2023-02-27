@@ -80,7 +80,7 @@ if(token){
 getCartData();
 async function getCartData(){ 
     try {
-      let req=await fetch(`http://localhost:5050/users/cart`,{
+      let req=await fetch(`https://misty-turtleneck-shirt-ray.cyclic.app/users/cart`,{
         headers:{
           'Authorization':token
         }
@@ -166,7 +166,7 @@ function displayCart(data){
 // DELETINF CART ITEMS
 async function funDelitem(e){
   try {
-    let req=await fetch(`http://localhost:5050/users/cart/delete/${e.target.dataset.id}`,{
+    let req=await fetch(`https://misty-turtleneck-shirt-ray.cyclic.app/users/cart/delete/${e.target.dataset.id}`,{
       method:'DELETE',
       headers:{
         'Authorization':token

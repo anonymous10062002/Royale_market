@@ -80,7 +80,7 @@ getProduct();
 async function getProduct(){
     let pID=localStorage.getItem("productID");
     try {
-        let req=await fetch(`http://localhost:5050/products?_id=${pID}`);
+        let req=await fetch(`https://misty-turtleneck-shirt-ray.cyclic.app/products?_id=${pID}`);
         let res=await req.json();
         displayProduct(res[0]);
     } catch (error) {
@@ -136,7 +136,7 @@ function displayProduct(data){
       data.quantity= +qty;
     try {
       console.log(data);
-      let req=await fetch(`http://localhost:5050/users/cart/add`,{
+      let req=await fetch(`https://misty-turtleneck-shirt-ray.cyclic.app/users/cart/add`,{
         method:'POST',
         headers:{
           'Content-Type':'application/json',

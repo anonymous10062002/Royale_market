@@ -79,7 +79,7 @@ function myFunction3() {
 getdata();
 async function getdata() {
   try {
-    let req = await fetch("http://localhost:5050/jwellery");
+    let req = await fetch("https://misty-turtleneck-shirt-ray.cyclic.app/jwellery");
     let data = await req.json();
     displayData(data);
   } catch (error) {

@@ -3,6 +3,7 @@ const {UserModel}=require('../models/user.model');
 const userRouter=express.Router();
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
+require('dotenv').config();
 
 userRouter.post('/login',async(req,res)=>{
     let {email,password}=req.body;
@@ -11,7 +12,7 @@ userRouter.post('/login',async(req,res)=>{
         if(user.length){
             bcrypt.compare(password,user[0].password,(err,result)=>{
                 if(result){
-                    let token=jwt.sign({userID:user[0]._id},'royal');
+                    let token=jwt.sign({userID:user[0]._id},process.env.key);
                     res.status(200).send({token,username:user[0].username});
                 }
                 else{

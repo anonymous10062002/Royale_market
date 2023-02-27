@@ -1,19 +1,19 @@
 // CHECKING LOGGED IN OR NOT
-if(sessionStorage.getItem("accessToken")){
+let token=sessionStorage.getItem("accessToken"); 
+if(token){
     let username=sessionStorage.getItem("username");
     let options=document.getElementById("options");
     options.innerHTML=`<div id="leftWel">Welcome ${username}</div>
     <div id="rightWel">
-    MY CART
     <button id="logoutBtn">Logout</button>
     </div>`
   }
   // LOGOUT BY BTN
-  if(sessionStorage.getItem("accessToken")){
+  if(token){
     let logoutBtn=document.getElementById("logoutBtn");
     logoutBtn.addEventListener("click",()=>{
     sessionStorage.clear();
-    location.reload();
+    window.location.assign('index.html');
     })
   }
   // JUMP TO HOMEPAGE
@@ -78,10 +78,9 @@ if(sessionStorage.getItem("accessToken")){
 // GETTING CART DATA
 
 getCartData();
-async function getCartData(){
-    let token=sessionStorage.getItem("accessToken"); 
+async function getCartData(){ 
     try {
-      let req=await fetch(`https://alive-pig-kimono.cyclic.app/users/cart`,{
+      let req=await fetch(`http://localhost:5050/users/cart`,{
         headers:{
           'Authorization':token
         }
@@ -90,6 +89,10 @@ async function getCartData(){
       if(req.ok){
         displayCart(res);
       }
+      else{
+        let mainDiv=document.getElementById("mainDiv");
+        mainDiv.innerHTML='<h2 id="oops">Oops! your cart is empty</h2><img id="empty" src="./src/images/empty-box.png">';
+      }
     } catch (error) {
       console.log(error);
     }
@@ -97,28 +100,83 @@ async function getCartData(){
 
 // DISPLAY CART DATA
 function displayCart(data){
-    let mainDiv=document.getElementById("mainDiv");
+  let total=0;
+  let table=document.getElementById("checktable");
+  let tbody=document.getElementById("tbd");
+  document.getElementById("itembrand").innerText="Brand";
+  document.getElementById("itemdes").innerText="Item";
+  document.getElementById("itemqty").innerText="Qty.";
+  document.getElementById("itemprice").innerText="Price";
+  document.getElementById("subtotal").innerText="Subtotal";
+  let mainDiv=document.getElementById("mainDiv");
+
     data.forEach((item)=>{
+        total=total+ (item.price*item.quantity);
         let unikDiv=document.createElement("div");
         unikDiv.setAttribute("id","unikDiv");
         unikDiv.innerHTML=`<div id="fstDiv">
-        <img src=${item.product} alt="productImage">
-    </div>
-    <div id="secDiv">
-        <h3>${item.brand}</h3>
-        <p>${item.description}</p>
-        <p>Category: ${item.category}</p><br>
-        <button id="delcartbtn">Remove item</button>
-    </div>
-    <div id="thrDiv">
-        <select name="quantity" id="qty">
-            <option value="1">Qty</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-        </select>
-        <h3 id="prodprice">${item.price}</h3>
-    </div>`
+                          <img src=${item.product} alt="productImage">
+                          </div>
+                          <div id="secDiv">
+                              <h3>${item.brand}</h3>
+                              <p>${item.description}</p>
+                              <p>Category: ${item.category}</p><br>
+                              <button id="delcartbtn" data-id=${item._id}>Remove</button>
+                          </div>
+                          <div id="thrDiv">
+                              <h3 id="ph">Price</h3>
+                              <p id="prodprice">${item.price}/-</p>
+                          </div>`
         mainDiv.append(unikDiv);
+        let btns=document.querySelectorAll("#delcartbtn");
+        btns.forEach((btn)=>{btn.addEventListener("click",funDelitem)});
+        // //////////////////////////////////////////////////////////////
+        let row=document.createElement("tr");
+        let td1=document.createElement("td");
+        td1.innerText=item.brand;
+        let td2=document.createElement("td");
+        td2.innerText=item.description;
+        let td3=document.createElement("td");
+        td3.innerText=item.quantity;                    
+        let td4=document.createElement("td");
+        td4.innerText=`${item.price}/-`;
+        let td5=document.createElement("td");
+        td5.innerText=`${item.price* item.quantity}/-`;  
+        row.append(td1,td2,td3,td4,td5);
+        tbody.append(row);
     })
+    
+    table.append(tbody);
+    let checkout=document.getElementById("checkout");
+
+    let totaldiv=document.createElement("div");
+    totaldiv.setAttribute("id","totdiv");
+    totaldiv.innerHTML=`<button id="totbtn">Total Order Amount: ${total}</button>`;
+
+    let btndiv=document.createElement("div");
+    btndiv.setAttribute("id","btndiv");
+    btndiv.innerHTML=`<button id="checkbtn">CHECKOUT</button>`;
+    checkout.append(totaldiv,btndiv);
+
+    btndiv.addEventListener("click",()=>{
+      window.location.assign('./payment.html');
+    })
+}
+
+// DELETINF CART ITEMS
+async function funDelitem(e){
+  try {
+    let req=await fetch(`http://localhost:5050/users/cart/delete/${e.target.dataset.id}`,{
+      method:'DELETE',
+      headers:{
+        'Authorization':token
+      }
+    });
+    let res=await req.json();
+    if(req.ok){
+      location.reload();
+    }
+  } catch (error) {
+    console.log(error);
+  }
 }

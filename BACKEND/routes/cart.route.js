@@ -14,7 +14,7 @@ cartRouter.get('/',async(req,res)=>{
                 res.status(200).send(cartData);
             }
             else{
-                res.status(200).send({"msg":"Oops! Your cart is empty."});
+                res.status(404).send({"msg":"Oops! Your cart is empty."});
             }
         }
         else{
@@ -27,7 +27,7 @@ cartRouter.get('/',async(req,res)=>{
 })
 
 cartRouter.post('/add',async(req,res)=>{
-    let {product,brand,description,category,price}=req.body;
+    let {product,brand,description,category,price,quantity}=req.body;
     try {
         let token=req.headers.authorization;
         let decoded=jwt.verify(token,process.env.key);
@@ -37,7 +37,7 @@ cartRouter.post('/add',async(req,res)=>{
                 res.status(200).send({"msg":"product already there in Cart"});
             }
             else{
-                let newCartItem=new CartModel({userID:decoded.userID,product,brand,description,category,price});
+                let newCartItem=new CartModel({userID:decoded.userID,product,brand,description,category,price,quantity});
                 await newCartItem.save();
                 res.status(200).send({"msg":"Product added in cart"});
             }

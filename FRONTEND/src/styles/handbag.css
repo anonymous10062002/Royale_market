@@ -99,7 +99,12 @@ header{
 .ulhead{
     font-weight: bold;
 }
-
+#rightWel{
+    display: flex;
+}
+#rightWel>p{
+    cursor: pointer;
+}
 /* ########################################################################## */
 
 

@@ -1,3 +1,4 @@
+let token=sessionStorage.getItem("accessToken"); 
 // CHECKING LOGGED IN OR NOT
 if(sessionStorage.getItem("accessToken")){
     let username=sessionStorage.getItem("username");
@@ -13,7 +14,7 @@ if(sessionStorage.getItem("accessToken")){
     let logoutBtn=document.getElementById("logoutBtn");
     logoutBtn.addEventListener("click",()=>{
     sessionStorage.clear();
-    location.reload();
+    window.location.assign('index.html');
     })
 }
 // JUMP TO HOMEPAGE
@@ -79,9 +80,8 @@ getProduct();
 async function getProduct(){
     let pID=localStorage.getItem("productID");
     try {
-        let req=await fetch(`https://alive-pig-kimono.cyclic.app/?_id=${pID}`);
+        let req=await fetch(`http://localhost:5050/products?_id=${pID}`);
         let res=await req.json();
-        // console.log(data);
         displayProduct(res[0]);
     } catch (error) {
         console.log(error);
@@ -112,28 +112,31 @@ function displayProduct(data){
     color.innerText="COLOR: GREY";
     let size=document.createElement("p");
     size.setAttribute("id","sizepara");
-    size.innerText='SIZE:';
-    let select=document.createElement("select");
-    select.innerHTML=`
-    <option value="Small">Select a size</option>
-    <option value="Small">Small</option>
-    <option value="Medium">Medium</option>
-    <option value="Large">Large</option>`
-    let br=document.createElement("br");
-    let btn=document.createElement("button");
-    btn.setAttribute("id","crtBtn");
-    btn.innerText='ADD TO CART';
+    size.innerText='QUANTITY:';
+    let form=document.createElement("form");
+    form.setAttribute("id","carform");
+    form.innerHTML=`
+    <select form="carform" name="quantity" id="qty">
+      <option value="1">Quantity</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select><br><br>
+    <button type="submit" id="crtBtn">ADD TO CART</button>`
     let favBtn=document.createElement("button");
     favBtn.setAttribute("id","favBtn");
     favBtn.innerText="ADD TO FAVOURITES";
-    detailDiv.append(brand,des,price,color,size,select,br,btn,br,favBtn);
+    detailDiv.append(brand,des,price,color,size,form,favBtn);
     mainDiv.append(imgDiv,detailDiv);
 
-  // ADD DATA TO CART API
-    btn.addEventListener("click",async()=>{
-      let token=sessionStorage.getItem("accessToken"); 
+    // ADD DATA TO CART API
+    form.addEventListener("submit",async(e)=>{
+      e.preventDefault();
+      let qty=document.getElementById("qty").value;
+      data.quantity= +qty;
     try {
-      let req=await fetch(`https://alive-pig-kimono.cyclic.app/users/cart/add`,{
+      console.log(data);
+      let req=await fetch(`http://localhost:5050/users/cart/add`,{
         method:'POST',
         headers:{
           'Content-Type':'application/json',
@@ -143,6 +146,9 @@ function displayProduct(data){
       })
       let res=await req.json();
       if(req.ok){
+        console.log(alert(res.msg));
+      }
+      else{
         console.log(alert(res.msg));
       }
     } catch (error) {

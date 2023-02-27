@@ -4,9 +4,9 @@ if(sessionStorage.getItem("accessToken")){
   let options=document.getElementById("options");
   options.innerHTML=`<div id="leftWel">Welcome ${username}</div>
   <div id="rightWel">
-  MY CART
-  <button id="logoutBtn">Logout</button>
-  </div>`
+    <p>MY CART<p/>
+    <button id="logoutBtn">Logout</button>
+    </div>`
 }
 // LOGOUT BY BTN
 if(sessionStorage.getItem("accessToken")){
@@ -75,11 +75,11 @@ function myFunction3() {
   }
 }
 
-// TRENDING COLLECTIONS
+// GET TRENDING COLLECTIONS
 getdata();
 async function getdata() {
   try {
-    let req = await fetch("https://alive-pig-kimono.cyclic.app/handbags");
+    let req = await fetch("http://localhost:5050/products/?cateogry=Handbags");
     let data = await req.json();
     displayData(data);
   } catch (error) {
@@ -109,5 +109,16 @@ function displayData(data) {
     btnDiv.append(buyBtn,addCartBtn);
     div.append(img, title, price,btnDiv);
     mainDiv.append(div);
+    img.addEventListener("click",()=>{
+      localStorage.setItem("productID",item._id);
+      location.assign("product.html");
+    })
   });
 }
+
+// JUMP TO CART PAGE
+
+let myCart=document.getElementById("rightWel");
+myCart.addEventListener("click",()=>{
+  window.location.assign('cart.html');
+});

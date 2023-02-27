@@ -5,7 +5,8 @@ const productSchema=mongoose.Schema({
     brand: String,
     description: String,
     category: String,
-    price: Number
+    price: Number,
+    quantity: Number
 },{versionKey:false})
 
 const ProductModel=mongoose.model('products',productSchema);

@@ -8,6 +8,11 @@ if(sessionStorage.getItem("accessToken")){
   <button id="logoutBtn">Logout</button>
   </div>`
 }
+// JUMP TO CART PAGE
+let myCart=document.getElementById("rightWel");
+myCart.addEventListener("click",()=>{
+  window.location.assign('cart.html');
+});
 // LOGOUT BY BTN
 if(sessionStorage.getItem("accessToken")){
   let logoutBtn=document.getElementById("logoutBtn");
@@ -92,11 +97,11 @@ setInterval(third, 9000);
 getdata();
 async function getdata() {
   try {
-    let req = await fetch("https://alive-pig-kimono.cyclic.app/products?category=Sneakers&limit=8");
+    let req = await fetch("http://localhost:5050/products?category=Sneakers&limit=8");
     let data = await req.json();
     displayData(data);
   } catch (error) {
-    console.log(error);
+    console.log(error.msg);
   }
 }
 //TRENDING DISPLAY FUNCTION
@@ -124,7 +129,7 @@ function displayData(data) {
     trendingDiv.append(div);
     img.addEventListener("click",()=>{
       localStorage.setItem("productID",item._id);
-      window.location.assign("product.html");
+      location.assign("./product.html");
     })
   });
 }

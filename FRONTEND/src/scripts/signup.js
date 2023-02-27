@@ -19,7 +19,7 @@ form.addEventListener("submit",async(e)=>{
     let username=`${fname} ${lname}`;
     let userObj={username,email,password};
     try {
-        let req=await fetch("https://alive-pig-kimono.cyclic.app/users/register",{
+        let req=await fetch("http://localhost:5050/users/register",{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
